@@ -10,6 +10,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using SaleWebMvc.Data;
+using SaleWebMvc.Services;
 
 namespace SaleWebMvc
 {
@@ -32,6 +33,9 @@ namespace SaleWebMvc
             services.AddDbContext<SaleWebMvcContext>(options =>
                     options.UseMySql(connection,ServerVersion.AutoDetect(connection), builder =>
                     builder.MigrationsAssembly("SaleWebMvc")));
+
+            //services.AddScoped<SeedingService>();
+            services.AddScoped<SellerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,7 +43,7 @@ namespace SaleWebMvc
         {
             if (env.IsDevelopment())
             {
-                app.UseDeveloperExceptionPage();
+                app.UseDeveloperExceptionPage();  
             }
             else
             {
