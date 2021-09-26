@@ -74,7 +74,7 @@ namespace SaleWebMvc.Controllers
             }
             catch(IntegrityException e)
             {
-                return RedirectToAction(nameof(Error), new { message = "Can't delete seller because he/she has sales" });
+                return RedirectToAction(nameof(Error), new { message = "Can't delete seller because he/she has sales " });
             }
         }
 
